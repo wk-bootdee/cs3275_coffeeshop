@@ -1,0 +1,29 @@
+import http from "@/http-common";
+
+class AdminService {
+  getOrderByStatus(status) {
+    return http.get(`/admin/orders/status/${status}`);
+  }
+
+  addMenuItem(data) {
+    return http.post("/admin/menu-items", data);
+  }
+
+  deleteMenuItem(id) {
+    return http.delete(`/admin/menu-items/${id}`);
+  }
+
+  updateMenuItem(id, data) {
+    return http.put(`/admin/menu-items/${id}`, data);
+  }
+
+  getOrderlist() {
+    return http.get(`/admin/orders/placed`);
+  }
+
+  completeOrder(id) {
+    return http.put(`/admin/orders/${id}/complete`);
+  }
+}
+
+export default new AdminService();
