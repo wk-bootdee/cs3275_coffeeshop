@@ -2,9 +2,9 @@ import { createWebHistory, createRouter } from "vue-router";
 import MenuItems from "../components/MenuItems.vue";
 import ReviewOrder from "../components/ReviewOrder.vue";
 import OrderManagement from "../components/OrderManagement.vue";
-import AddMenuItem from "@/components/AddMenuItem.vue";
-import UpdateMenuItem from "@/components/UpdateMenuItem.vue";
 import DeleteMenuItem from "@/components/DeleteMenuItem.vue";
+import EditMenuItem from "@/components/EditMenuItem.vue";
+import AddMenuItem from "@/components/AddMenuItem.vue";
 
 const routes = [
   {
@@ -29,9 +29,9 @@ const routes = [
     component: AddMenuItem,
   },
   {
-    path: "/updateMenuItem",
-    name: "UpdateMenuItem",
-    component: UpdateMenuItem,
+    path: "/EditMenuItem",
+    name: "EditMenuItem",
+    component: EditMenuItem,
   },
   {
     path: "/deleteMenuItem",
