@@ -1,16 +1,11 @@
-<!-- eslint-disable vue/require-v-for-key -->
 <template>
-
-    <div class="container">
-        <h1>Add Menu Item</h1>
-        <menu-item-form :onsubmit="addMenuItem" />
-    </div>
-
+    <h1>Add Menu Item</h1>
+    <menu-item-form :onsubmit="addMenuItem" />
 </template>
 
 <script>
 import AdminService from '@/services/AdminService';
-import MenuItemForm from './forms/MenuItemForm.vue';
+import MenuItemForm from '../forms/MenuItemForm.vue';
 
 export default {
     name: 'AddMenuItem',

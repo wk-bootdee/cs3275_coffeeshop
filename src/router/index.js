@@ -2,10 +2,11 @@ import { createWebHistory, createRouter } from "vue-router";
 import MenuItems from "../components/MenuItems.vue";
 import ReviewOrder from "../components/ReviewOrder.vue";
 import OrderManagement from "../components/OrderManagement.vue";
-import DeleteMenuItem from "@/components/DeleteMenuItem.vue";
-import EditMenuItem from "@/components/EditMenuItem.vue";
-import AddMenuItem from "@/components/AddMenuItem.vue";
-import AdminOrderManagement from "@/components/AdminOrderManagement.vue";
+import AdminOrderManagement from "@/components/admin/AdminOrderManagement.vue";
+import AdminPage from "@/components/admin/AdminPage.vue";
+import AdminMenuItemsManagement from "@/components/admin/AdminMenuItemsManagement.vue";
+import AddMenuItem from "@/components/admin/AddMenuItem.vue";
+import EditMenuItem from "@/components/admin/EditMenuItem.vue";
 
 const routes = [
   {
@@ -25,24 +26,32 @@ const routes = [
   },
 
   {
-    path: "/admin/orders",
-    component: AdminOrderManagement,
-  },
-
-  {
-    path: "/addMenuItem",
-    name: "AddMenuItem",
-    component: AddMenuItem,
-  },
-  {
-    path: "/EditMenuItem",
-    name: "EditMenuItem",
-    component: EditMenuItem,
-  },
-  {
-    path: "/deleteMenuItem",
-    name: "DeleteMenuItem",
-    component: DeleteMenuItem,
+    path: "/admin",
+    component: AdminPage,
+    children: [
+      {
+        path: "orders",
+        name: "AdminOrderManagement",
+        component: AdminOrderManagement,
+      },
+      {
+        path: "menu-items",
+        name: "AdminMenuItemsManagement",
+        component: AdminMenuItemsManagement,
+        children: [
+          {
+            path: "add",
+            name: "AdminAddMenuItem",
+            component: AddMenuItem,
+          },
+          {
+            path: ":id/edit",
+            name: "AdminEditMenuItem",
+            component: EditMenuItem,
+          },
+        ],
+      },
+    ],
   },
 ];
 

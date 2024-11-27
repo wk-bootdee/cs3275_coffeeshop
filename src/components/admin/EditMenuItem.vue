@@ -7,8 +7,8 @@
 
 <script>
 import AdminService from '@/services/AdminService';
-import MenuItemService from '../services/MenuItemService'
-import MenuItemForm from './forms/MenuItemForm.vue';
+import MenuItemService from '../../services/MenuItemService'
+import MenuItemForm from '../forms/MenuItemForm.vue';
 
 export default {
     name: 'EditMenuItem',
