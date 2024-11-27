@@ -15,9 +15,9 @@ export default {
 
     methods: {
         addMenuItem(payload) {
-            AdminService.addMenuItem(payload).then((response) => {
-                console.log(response);
-                this.$router.push({ name: 'MenuItems' });
+            AdminService.addMenuItem(payload).then(() => {
+                // Redirect to the AdminMenuItemsManagement page
+                this.$router.push({ name: 'AdminMenuItemsManagement' });
             });
         }
     }
