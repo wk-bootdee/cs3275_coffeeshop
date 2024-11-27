@@ -7,8 +7,8 @@
                 <p>No orders available</p>
             </div>
         </div>
-        <h2>Confirmed Orders</h2>
         <div class="row" v-show="orders.length > 0">
+            <h2>Confirmed Orders</h2>
             <div class="col" v-for="order in orders" :key="order.id">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
@@ -32,7 +32,13 @@
                                 </li>
                             </ul>
                         </div>
+
                     </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary" style="width: 100%;"
+                            @click="handleOnClickCompletedOrder(order.id)">Completed Order</button>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -73,6 +79,11 @@ export default {
                 currency: "CAD",
                 style: "currency"
             }).format(amount);
+        },
+        handleOnClickCompletedOrder(orderId) {
+            AdminService.completeOrder(orderId).then(() => {
+                this.getConfirmOrders();
+            });
         }
     }
 }
