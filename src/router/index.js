@@ -5,6 +5,7 @@ import OrderManagement from "../components/OrderManagement.vue";
 import DeleteMenuItem from "@/components/DeleteMenuItem.vue";
 import EditMenuItem from "@/components/EditMenuItem.vue";
 import AddMenuItem from "@/components/AddMenuItem.vue";
+import AdminOrderManagement from "@/components/AdminOrderManagement.vue";
 
 const routes = [
   {
@@ -21,6 +22,11 @@ const routes = [
     path: "/orders/:orderId",
     component: ReviewOrder,
     props: true, // Automatically maps the route parameter to component prop.
+  },
+
+  {
+    path: "/admin/orders",
+    component: AdminOrderManagement,
   },
 
   {

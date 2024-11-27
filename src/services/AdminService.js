@@ -24,8 +24,8 @@ class AdminService {
     return http.put(`/admin/menu-items/${id}`, data);
   }
 
-  getOrderlist() {
-    return http.get(`/admin/orders/placed`);
+  getConfirmOrders() {
+    return http.get(`/admin/orders/status/CONFIRMED`);
   }
 
   completeOrder(id) {
