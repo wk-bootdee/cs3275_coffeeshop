@@ -9,8 +9,7 @@
 </template>
 
 <script>
-
-// import MenuItemService from '../services/MenuItemService'
+import AdminService from '@/services/AdminService';
 import MenuItemForm from './forms/MenuItemForm.vue';
 
 export default {
@@ -21,10 +20,10 @@ export default {
 
     methods: {
         addMenuItem(payload) {
-            console.log(payload);
-            // MenuItemService.addMenuItem(this.menuItem).then(() => {
-            //     this.$router.push({ name: 'menuItems' });
-            // });
+            AdminService.addMenuItem(payload).then((response) => {
+                console.log(response);
+                this.$router.push({ name: 'MenuItems' });
+            });
         }
     }
 }

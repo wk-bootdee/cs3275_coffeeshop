@@ -69,6 +69,10 @@ export default {
             type: Function,
             required: true
         },
+        menuInfo: {
+            type: Object,
+            required: true
+        }
     },
 
     data() {
@@ -93,17 +97,23 @@ export default {
                 { name: '35g sugar' },
                 { name: '12g fat' }
             ],
-            menuItem: {
-                "name": "",
-                "description": "",
-                "category": "",
-                "price": 0,
-                "customizations": {
-                    "Milk Type": [],
-                    "Toppings": [],
-                    "Size": []
+        }
+    },
+
+    computed: {
+        menuItem() {
+            return {
+                name: '',
+                description: '',
+                category: '',
+                price: 0,
+                customizations: {
+                    'Milk Type': [],
+                    'Toppings': [],
+                    'Size': []
                 },
-                "nutritionalInformation": []
+                nutritionalInformation: [],
+                ...this.$props.menuInfo
             }
         }
     },
@@ -112,7 +122,7 @@ export default {
     methods: {
         handleOnSubmit(e) {
             e.preventDefault();
-            this.$props.onsubmit(this.menuItem);
+            this.onsubmit(this.menuItem);
         }
     },
 }

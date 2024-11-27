@@ -1,6 +1,13 @@
 import http from "@/http-common";
 
 class AdminService {
+  constructor() {
+    http.defaults.auth = {
+      username: "admin",
+      password: "adminPass123",
+    };
+  }
+
   getOrderByStatus(status) {
     return http.get(`/admin/orders/status/${status}`);
   }
