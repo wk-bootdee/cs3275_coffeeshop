@@ -5,29 +5,32 @@
         </h1>
         <router-link :to="{ name: 'AdminAddMenuItem' }" class="btn btn-primary">Add Menu Item</router-link>
         <div>
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Actions</th>
-                    </tr>
+                    <th> Item ID </th>
+                    <th> Item Name </th>
+                    <th> Category </th>
+                    <th> Price </th>
+                    <th class="text-center"> Actions </th>
                 </thead>
                 <tbody>
-                    <tr v-for="menuItem in menuItems" :key="menuItem.id">
+                    <tr v-for="menuItem in menuItems" v-bind:key="menuItem.id">
                         <td>{{ menuItem.id }}</td>
                         <td>{{ menuItem.name }}</td>
-                        <td>{{ menuItem.price }}</td>
-                        <td>
-                            <router-link :to="{ name: 'AdminEditMenuItem', params: { id: menuItem.id } }"
-                                class="btn btn-primary">Edit</router-link>
-                            <button @click="deleteMenuItem(menuItem.id)" class="btn btn-danger">Delete</button>
+                        <td>{{ menuItem.category }}</td>
+                        <td>{{ toCAD(menuItem.price) }}</td>
+
+                        <td class="text-right" style="display: flex;justify-content: center;">
+                            <router-link target="_blank"
+                                :to="{ name: 'AdminEditMenuItem', params: { id: menuItem.id } }"
+                                class="btn btn-outline-secondary">Edit</router-link>
+                            <button class="btn btn-danger" @click="handleOnClickShowDialog(menuItem.id)">Delete</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+
         <RouterView />
 
         <!-- Modal -->
@@ -60,11 +63,15 @@ export default {
     name: 'AdminMenuItemsManagement',
     data() {
         return {
-            menuItems: []
+            menuItems: [],
+            dialog: null,
         }
     },
     created() {
         this.getAllMenuItems();
+    },
+    mounted() {
+        this.dialog = document.getElementById('modal');
     },
     methods: {
         getAllMenuItems() {
@@ -85,7 +92,16 @@ export default {
         handleOnClickShowDialog(id) {
             this.selectedId = id;
             this.dialog.showModal();
+        },
+        toCAD(price) {
+            return Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(price);
         }
     }
 }
 </script>
+
+<style scoped>
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+</style>

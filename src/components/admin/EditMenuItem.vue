@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1>Update Menu Item</h1>
+        <h2>Update Menu Item</h2>
         <menu-item-form :menu-info="menuInfo" :onsubmit="handleOnSubmit" />
     </div>
 </template>
@@ -35,8 +35,8 @@ export default {
         }
     },
     mounted() {
-        // Get the id from the query string
-        const id = this.$route.query.id;
+        // Get the id from this url http://localhost:8081/admin/menu-items/1/edit
+        const id = this.$route.params.id;
         this.getMenuItemById(id);
     }
 }

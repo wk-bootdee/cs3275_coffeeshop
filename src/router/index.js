@@ -44,12 +44,12 @@ const routes = [
             name: "AdminAddMenuItem",
             component: AddMenuItem,
           },
-          {
-            path: ":id/edit",
-            name: "AdminEditMenuItem",
-            component: EditMenuItem,
-          },
         ],
+      },
+      {
+        path: "/admin/menu-items/:id/edit",
+        name: "AdminEditMenuItem",
+        component: EditMenuItem,
       },
     ],
   },
