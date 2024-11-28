@@ -28,14 +28,13 @@ export default {
             });
         },
         handleOnSubmit(menuItem) {
-            const id = this.$route.query.id;
+            const id = this.$route.params.id;
             AdminService.updateMenuItem(id, menuItem).then(() => {
-                this.$router.push({ name: 'MenuItems' });
+                this.$router.push({ name: 'AdminMenuItemsManagement' });
             });
         }
     },
     mounted() {
-        // Get the id from this url http://localhost:8081/admin/menu-items/1/edit
         const id = this.$route.params.id;
         this.getMenuItemById(id);
     }

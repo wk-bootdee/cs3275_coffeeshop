@@ -21,8 +21,7 @@
                         <td>{{ toCAD(menuItem.price) }}</td>
 
                         <td class="text-right" style="display: flex;justify-content: center;">
-                            <router-link target="_blank"
-                                :to="{ name: 'AdminEditMenuItem', params: { id: menuItem.id } }"
+                            <router-link :to="{ name: 'AdminEditMenuItem', params: { id: menuItem.id } }"
                                 class="btn btn-outline-secondary">Edit</router-link>
                             <button class="btn btn-danger" @click="handleOnClickShowDialog(menuItem.id)">Delete</button>
                         </td>
